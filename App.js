@@ -5,6 +5,8 @@ import { useState } from 'react';
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
 
+import Colors from './constants/colors';
+
 export default function App() {
   const [userNumber, setUserNumber] = useState();
 
@@ -18,7 +20,10 @@ export default function App() {
   }
 
   return (
-    <LinearGradient colors={['#4e0329', '#ddb52f']} style={styles.rootScreen}>
+    <LinearGradient
+      colors={['#4e0329', Colors.accent500]}
+      style={styles.rootScreen}
+    >
       <ImageBackground
         source={require('./assets/images/background.png')}
         resizeMode='cover'
@@ -35,4 +40,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
 
