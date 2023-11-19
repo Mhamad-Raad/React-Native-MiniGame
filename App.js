@@ -16,7 +16,7 @@ export default function App() {
 
   let screen = <StartGameScreen onPickNumber={pickNumberHandler} />;
   if (userNumber) {
-    screen = <GameScreen />;
+    screen = <GameScreen userNumber={userNumber} />;
   }
 
   return (
@@ -40,5 +40,4 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
 
