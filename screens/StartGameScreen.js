@@ -3,23 +3,33 @@ import { useState } from 'react';
 
 import PrimaryButton from '../components/PrimaryButton';
 
-const StartGameScreen = () => {
+const StartGameScreen = ({ onPickNumber }) => {
   const [enterNumber, setEnterNumber] = useState('');
 
   const numberInputHandler = (enteredText) => {
+    console.log(enteredText);
     setEnterNumber(enteredText);
   };
 
   const resetInputHandler = () => {
     setEnterNumber('');
-  }
+  };
 
   const confirmInputHandler = () => {
+    console.log(enterNumber);
     const chosenNumber = parseInt(enterNumber);
-    if (isNaN(chosenNumber) || chosenNumber <=0 || chosenNumber > 99) {
-      Alert.alert('Invalid Number', 'Number has to be between 0 and 99', [{text: 'Okay', style: 'destructive', onPress: ()=> resetInputHandler}])
+    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+      console.log(chosenNumber);
+      Alert.alert('Invalid Number', 'Number has to be between 0 and 99', [
+        {
+          text: 'Okay',
+          style: 'destructive',
+          onPress: () => resetInputHandler,
+        },
+      ]);
       return;
     }
+    onPickNumber(chosenNumber);
   };
 
   return (
@@ -30,8 +40,7 @@ const StartGameScreen = () => {
         keyboardType='number-pad'
         autoCapitalize='none'
         autoCorrect={false}
-        value={enterNumber}
-        onChange={numberInputHandler}
+        onChangeText={numberInputHandler}
       />
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonContainer}>
