@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native';
 
 import NumberContainer from '../components/game/NumberContainer';
@@ -25,6 +25,12 @@ function GameScreen({ userNumber }) {
     userNumber
   );
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
+
+  useEffect(() => {
+    if (currentGuess === userNumber) {
+      Alert.alert('Game Over!', 'You won!', [{ text: 'OK' }]);
+    }
+  }, [userNumber, currentGuess]);
 
   function nextGuessHandler(direction) {
     // direction => 'lower', 'greater'
