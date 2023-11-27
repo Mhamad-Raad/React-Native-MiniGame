@@ -15,7 +15,7 @@ export default GuessLogItem;
 
 const styles = StyleSheet.create({
   listItem: {
-    borderColor: Colors.primary800,
+    borderColor: Colors.primary700,
     borderWidth: 1,
     borderRadius: 40,
     padding: 12,
