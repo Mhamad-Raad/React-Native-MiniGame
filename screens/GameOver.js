@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, Image, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 import Title from '../components/ui/Title';
+import PrimaryButton from './../components/ui/PrimaryButton';
 
 import Colors from '../constants/colors';
 
@@ -14,7 +15,11 @@ const GameOver = () => {
           source={require('../assets/images/success.png')}
         />
       </View>
-      <Text>Your Phone needed x rounds to guess the number y.</Text>
+      <Text style={styles.summaryText}>
+        Your Phone needed <Text style={styles.highlight}>x</Text> rounds to
+        guess the number <Text style={styles.highlight}>y</Text>.
+      </Text>
+      <PrimaryButton>Start New Game</PrimaryButton>
     </View>
   );
 };
@@ -38,6 +43,16 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
+  },
+  summaryText: {
+    fontFamily: 'open-sans',
+    fontSize: 24,
+    textAlign: 'center',
+    marginBottom: 24,
+  },
+  highlight: {
+    color: Colors.primary500,
+    fontFamily: 'open-sans-bold',
   },
 });
 
