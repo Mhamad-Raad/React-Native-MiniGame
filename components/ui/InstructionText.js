@@ -7,8 +7,9 @@ const InstructionText = ({ children, style }) => {
 
 const styles = StyleSheet.create({
   instructionText: {
-    color: Colors.primary500,
+    color: Colors.accent500,
     fontSize: 24,
+    fontFamily: 'open-sans',
   },
 });
 
