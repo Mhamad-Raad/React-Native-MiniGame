@@ -1,4 +1,10 @@
-import { TextInput, View, StyleSheet, Alert, Text } from 'react-native';
+import {
+  TextInput,
+  View,
+  StyleSheet,
+  Alert,
+  useWindowDimensions,
+} from 'react-native';
 import { useState } from 'react';
 
 import PrimaryButton from '../components/ui/PrimaryButton';
@@ -18,10 +24,12 @@ const StartGameScreen = ({ onPickNumber }) => {
   const resetInputHandler = () => {
     setEnterNumber('');
   };
+  const { width, height } = useWindowDimensions();
 
   const confirmInputHandler = () => {
     console.log(enterNumber);
     const chosenNumber = parseInt(enterNumber);
+
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       console.log(chosenNumber);
       Alert.alert('Invalid Number', 'Number has to be between 0 and 99', [
@@ -36,8 +44,10 @@ const StartGameScreen = ({ onPickNumber }) => {
     onPickNumber(chosenNumber);
   };
 
+  const marginTopDistance = height < 440 ? 30 : 100;
+
   return (
-    <View style={styles.rootContainer}>
+    <View style={[styles.rootContainer, { marginTop: marginTopDistance }]}>
       <Title>Guess My Number</Title>
       <Card>
         <InstructionText>Enter a Number</InstructionText>
@@ -65,7 +75,6 @@ const StartGameScreen = ({ onPickNumber }) => {
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    marginTop: 100,
     alignItems: 'center',
   },
   numberInput: {
